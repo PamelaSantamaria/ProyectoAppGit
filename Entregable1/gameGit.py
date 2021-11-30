@@ -116,7 +116,7 @@ total_points = 0
 hint = 0
 
 
-#TODO: Agregar un loop para repetir la pregunta cuando se pida una pista.
+#TODO: Agregar un while para repetir la pregunta cuando se pida una pista.
 for t in trivia_com:
 
     options = '\n'.join(f'{chr(65 + i)}: {opt}' for i, opt in enumerate(t['options']))
