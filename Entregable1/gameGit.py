@@ -34,9 +34,9 @@ print("\n Ok, " + name + " a todo esto, ¿qué es Git?\n")
 print('''Git es un sistema de control de versiones distribuido. Esto significa que un clon local del proyecto es un repositorio de control de versiones completo. Estos repositorios locales plenamente funcionales permiten trabajar sin conexión o de forma remota fácilmente. Los desarrolladores confirman su trabajo localmente y, a continuación, sincronizan su copia del repositorio con la copia en el servidor.''')
 
 questions_prompts = [
-    "¿Qué es Git? \n(a) Un repositorio web \n(b) Un entorno de desarrollo de Python \n (c)Un sistema de control de versiones\n\n",
+    "¿Qué es Git? \n(a) Un repositorio web \n(b) Un entorno de desarrollo de Python \n(c) Un sistema de control de versiones\n\n",
     "¿Dónde se sincroniza el clon del repositorio local? \n(a) En la computadora del vecino \n(b) En los servidores de Git \n(c) En una libreta\n\n",
-    "Como desarrollador, ¿sirve conocer Git? \n(a) Nop \n(b)Para nada \n(c)Ninguna de las anteriores\n\n"
+    "Como desarrollador, ¿sirve conocer Git? \n(a) Nop \n(b) Para nada \n(c) Ninguna de las anteriores\n\n"
 ]
 
 question_list = [
@@ -45,19 +45,33 @@ question_list = [
     Question(questions_prompts[2], "c"),
 ]
 
-print("Escribe la letra que corresponda a la respuesta correcta\n")
-def run_test(question_list):
-    score = 0
-    for question in question_list :
-        ans = input(question.prompt)
-        if ans.lower() == question.answer:
-            print("Correcto!:D")
-            score += 1
-        else:
-            print("Incorrecto:(")
-    print("Tuviste " + str(score) + " de " + str(len(question_list))+ " preguntas correctas.")
+print("\nEscribe la letra que corresponda a la respuesta correcta\n")
 
+
+def run_test(question_list):
+        score = 0
+        for question in question_list :
+            ans = input(question.prompt)
+            if ans.lower() == question.answer:
+                print("Correcto!:D")
+                score += 1
+            else:
+                print("Incorrecto:(")
+        print("Tuviste " + str(score) + " de " + str(len(question_list))+ " preguntas correctas.\n")
+        score=score   
+        if score==3:
+            print("¡Felicidades, " + name + "! Todas tus respuestas estuvieron correctas. Continúa con tu aprendizaje.")
+        elif score<3:
+            print("No tuviste todas las respuestas correctas, ¿quieres volver a intentarlo?\n")
+    
 run_test(question_list)
+
+
+newchance=int(input("Escribe 1 si quieres volver a intentarlo, o 0 si quieres continuar\n"))
+if newchance==1:
+    run_test(question_list)
+else:
+    pass
         
         
 os.system("cls")
